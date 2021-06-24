@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>WebGL Test</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="testgl.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="testgl.js" type="text/javascript"></script>
+		<script id="vertex-shader-2d" type="x-shader/x-vertex">
+			attribute vec2 a_position;
+			attribute vec4 a_color;
+			uniform vec2 u_resolution;
+			varying vec4 v_color;
+
+			void main() {
+				vec2 zeroToOne = a_position / u_resolution;
+				vec2 clipSpace = zeroToOne * 2.0 - 1.0;
+				vec2 flipYdown = clipSpace * vec2(1, -1);
+
+				gl_PointSize = 5.0;
+				gl_Position = vec4(flipYdown, 0, 1);
+				v_color = a_color;
+			}
+		</script>
+		<script  id="fragment-shader-2d" type="x-shader/x-fragment">
+			precision mediump float;
+			
+			// passed by vertex shader
+			varying vec4 v_color;
+
+			void main() {
+				gl_FragColor = v_color;
+			}
+		</script>
+	</head>
+	<body>
+		<main>
+			<canvas id="canvas"></canvas>
+			<div id="buttons_div">
+				<p id="curr_label">Current mode: POINTS</p>
+				<button id="points">POINTS</button>
+				<button id="lines">LINES</button>
+				<button id="line_strip">LINE STRIP</button>
+				<button id="line_loop">LINE LOOP</button>
+				<button id="triangles">TRIANGLES</button>
+				<button id="triangle_strip">TRIANGLE STRIP</button>
+				<button id="triangle_fan">TRIANGLE FAN</button>
+			</div>			
+		</main>		
+	</body>
+</html>

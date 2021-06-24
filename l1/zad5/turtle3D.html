@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Turtle 3D Graphics</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="turtle3D.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="turtle3D.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<main>			
+				<canvas id="plane" height="600" width="1300" ></canvas>
+				<div id="panel">
+					<div id="inner_first">
+						<input id="command_input" value="Type commands here" onClick="this.select();">
+						<button id="run_button">Run commands</button>
+					</div>
+					<div id="inner_sec">
+						<input id="degree_input" type="range" min="1" max="7" value="4">
+						<input id="size" value="300" onClick="this.select();">
+						<button id="run_koch">Draw Koch snowflake</button>
+						<button id="run_sierp">Draw Sierpinski triangle</button>
+					</div>
+					<p> Choose number of sides of polygon</p>
+					<p id="poly_info"></p>
+					<div id="inner_trd">
+						<input id="sides_input" type="range" min="3" max="12" value="6">
+						<input id="length" value="200" onClick="this.select();">
+						<button id="poly_button">Draw regular polygon</button>
+					</div>
+				</div>
+				<div id="panel_controls">
+				<p><b>Controls:</b></p>
+				<ul>
+					<li><b>W, S, A, D</b> - move </li>
+					<li><b>Arrow Keys </b> - rotate left, right, up, down</li>
+					<li><b>Q, E</b> - roll left, right </li>
+					<li><b>Left click to enable or disable rotation with mouse</b></li>
+				</ul>
+				</div>	
+				<aside>
+				<p>Every command should end with semicolon ';'
+					<ul>
+						<li><b>fw x;</b> - move x forwards</li>
+						<li><b>bw x;</b> - move x backwards</li>
+						<li><b>rt x;</b> - rotate x degrees clockwise</li>
+						<li><b>lt x;</b> - rotate x degrees counterclockwise</li>
+						<li><b>dt x;</b> - rotate x degrees downwards</li>
+						<li><b>ut x;</b> - rotate x degrees upwards</li>
+						<li><b>repeat x [ commands ]</b> - repeat commands x times <i>no need to put ';' after ']'</i></li>
+						<li><b>up;</b> - pen up, stop drawing</li>
+						<li><b>down;</b> - pen down, start drawing</li>
+					</ul>
+				</p>
+				</aside>
+		</main>		
+	</body>
+</html>

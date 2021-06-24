@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Turtle Graphics</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="turtle.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<main>
+				<p id="coords"></p>				
+				<canvas id="plane" height="600" width="900" ></canvas>
+				<div id="panel">
+					<div id="inner_first">
+						<input id="command_input" value="Type commands here" onClick="this.select();">
+						<button id="run_button">Run commands</button>
+					</div>
+					<div id="inner_sec">
+						<input id="degree_input" type="range" min="1" max="7" value="4">
+						<input id="size" value="200" onClick="this.select();">
+						<button id="run_koch">Draw Koch snowflake</button>
+						<button id="run_sierp">Draw Sierpinski triangle</button>
+					</div>
+					<p> Choose number of sides and color:</p>
+					<p id="poly_info"></p>
+					<div id="inner_trd">
+						<input id="sides" type="range" min="3" max="12" value="6">
+						<input id="color" type="range" min="0" max="5" value="1">
+						<input id="length" value="100" onClick="this.select();">
+						<button id="poly_button">Draw regular polygon</button>
+					</div>
+				</div>
+				<aside>
+				<p>Every command should end with semicolon ';'
+					<ul>
+						<li><b>fw x;</b> - move x forwards</li>
+						<li><b>bw x;</b> - move x backwards</li>
+						<li><b>rt x;</b> - rotate x degrees clockwise</li>
+						<li><b>lt x;</b> - rotate x degrees counterclockwise</li>
+						<li><b>repeat x [ commands ]</b> - repeat commands x times <i>no need to put ';' after ']'</i></li>
+						<li><b>up;</b> - pen up, stop drawing</li>
+						<li><b>down;</b> - pen down, start drawing</li>
+					</ul>
+				</p>
+				</aside>
+				
+		</main>
+		
+		
+	</body>
+</html>

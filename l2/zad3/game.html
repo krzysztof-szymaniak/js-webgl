@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>WebGL Arkanoid</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="game.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="game.js" type="text/javascript"></script>
+		<script id="vertex-shader-2d" type="x-shader/x-vertex">
+			attribute vec2 a_position;
+			attribute vec2 a_texcoord;
+			attribute vec4 a_color;
+			
+			
+			uniform mat3 u_matrix;
+			uniform float u_depth;
+			uniform float u_point_size;
+			
+			varying vec2 v_texcoord;
+			varying vec4 v_color;
+			void main() {
+				gl_Position = vec4((u_matrix * vec3(a_position, 1)).xy, u_depth, 1);
+				gl_PointSize = u_point_size;
+				// pass colors and texture coords to fragment shader
+				v_color = a_color;
+				v_texcoord = a_texcoord;
+			}
+		</script>
+		<script  id="fragment-shader-2d" type="x-shader/x-fragment">
+			precision mediump float;
+			
+			varying vec2 v_texcoord;
+			varying vec4 v_color;
+			
+			uniform int u_istextured;
+			uniform sampler2D u_texture;
+			
+			void main() {
+				if (u_istextured == 1){
+					gl_FragColor = texture2D(u_texture, v_texcoord);
+				}
+				else {
+					gl_FragColor = v_color;
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<main>
+			<canvas id="canvas"></canvas>
+		</main>		
+	</body>
+</html>
